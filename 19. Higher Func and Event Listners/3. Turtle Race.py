@@ -37,19 +37,17 @@ def move_turtles():
         turtle.forward(move)
 
 def is_winner():
-    global is_race_on
     for turtle in turtles:
         if turtle.xcor() >= 230:
-            is_race_on = False
-            return turtle.pencolor()
-    return ''
+            return False, turtle.pencolor()
+    return True, ''
 
 create_turtles()
 position_turtles()
 
 while is_race_on:
     move_turtles()
-    winner_color = is_winner()
+    is_race_on, winner_color = is_winner()
 
 if winner_color == user_bet:
     print(f"You've won! The {winner_color} turtle is the winner!")
